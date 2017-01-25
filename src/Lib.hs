@@ -45,6 +45,15 @@ parserUnion doc (DateRepr dow localTime) =
   >>> css (".foodItemDesc")
   /> getText
 
+parserPiramida :: IOSLA (XIOState ()) XmlTree (NTree XNode)
+              -> DateRepr
+              -> IOSLA (XIOState ()) XmlTree String
+parserPiramida doc (DateRepr dow localTime) =
+  doc
+  >>> css (".jsrm-menu")
+  >. (!! dow)
+  >>> css (".item-text")
+  //> getText
 
 getDateRepr :: IO DateRepr
 getDateRepr =
@@ -67,7 +76,7 @@ parseEndpoint (Endpoint name url parser) dateRepr =
 getEndpoints :: [Endpoint]
 getEndpoints = [
     Endpoint "Union" "http://www.pivnica-union.si/si/" parserUnion,
-    Endpoint "Union" "http://www.pivnica-union.si/si/" parserUnion
+    Endpoint "Piramida" "http://pizzerijapiramida.si/malice/" parserPiramida
   ]
 
 
