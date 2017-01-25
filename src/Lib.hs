@@ -1,5 +1,7 @@
 module Lib
-    ( justDoIt
+    (
+      getMenus
+    , Menu (Menu)
     ) where
 
 
@@ -8,6 +10,7 @@ import Data.Time (ZonedTime, defaultTimeLocale, getZonedTime, formatTime)
 import Data.Tree.NTree.TypeDefs (NTree)
 import Text.XML.HXT.Core
 import Text.HandsomeSoup
+
 
 -- structures
 data DateRepr = DateRepr {
@@ -80,8 +83,7 @@ getEndpoints = [
   ]
 
 
-justDoIt :: IO ()
-justDoIt =
+getMenus :: IO [Menu]
+getMenus =
   getDateRepr >>= \dateRepr ->
-  mapM (\endpoint -> parseEndpoint endpoint dateRepr) getEndpoints >>= \menus ->
-  mapM_ print menus
+  mapM (\endpoint -> parseEndpoint endpoint dateRepr) getEndpoints
