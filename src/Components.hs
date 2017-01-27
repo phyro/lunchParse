@@ -8,9 +8,9 @@ module Components
 
 import Control.Monad (forM_)
 import Lib (Menu (Menu))
-import Text.Blaze.Html5 hiding (html, param, main)
+import Text.Blaze.Html5 (Html, toHtml)
 import Text.Blaze.Html.Renderer.Text (renderHtml)
-import qualified Text.Blaze.Html5 as H
+import Text.Blaze.Html5 as H
 
 data PageState = PageState {
   title :: Html,

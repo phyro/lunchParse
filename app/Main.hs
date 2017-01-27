@@ -2,11 +2,9 @@
 module Main where
 
 import Control.Monad.IO.Class  (liftIO)
-import Lib
+import Lib (getMenus)
 import Components (mainPage, PageState (PageState))
-import Text.Blaze.Html5 hiding (html, param, main)
 import Text.Blaze.Html.Renderer.Text (renderHtml)
-import qualified Text.Blaze.Html5 as H
 import Web.Scotty
 
 
