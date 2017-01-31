@@ -16,18 +16,18 @@ data DateRepr = DateRepr {
   localTime :: ZonedTime
 }
 
+type IBelieveInMagic = IOSLA (XIOState ()) XmlTree (NTree XNode)
+          -> DateRepr
+          -> IOSLA (XIOState ()) XmlTree String
+
 data Endpoint = Endpoint {
   name :: String,
   url :: String,
-  parser :: IOSLA (XIOState ()) XmlTree (NTree XNode)
-            -> DateRepr
-            -> IOSLA (XIOState ()) XmlTree String
+  parser :: IBelieveInMagic
 }
 
 -- parsers
-parserUnion :: IOSLA (XIOState ()) XmlTree (NTree XNode)
-              -> DateRepr
-              -> IOSLA (XIOState ()) XmlTree String
+parserUnion :: IBelieveInMagic
 parserUnion doc (DateRepr dow localTime) =
   doc
   >>> css (".foodDayMenuBlock-" ++ show dow ++ " .foodItem")
@@ -36,9 +36,7 @@ parserUnion doc (DateRepr dow localTime) =
   >>> css (".foodItemDesc")
   /> getText
 
-parserPiramida :: IOSLA (XIOState ()) XmlTree (NTree XNode)
-              -> DateRepr
-              -> IOSLA (XIOState ()) XmlTree String
+parserPiramida :: IBelieveInMagic
 parserPiramida doc (DateRepr dow localTime) =
   doc
   >>> css (".jsrm-menu")
