@@ -2,7 +2,7 @@ name:                lunchParse
 version:             0.1.0.0
 synopsis:            Initial project template from stack
 description:         Please see README.md
-homepage:            https://github.com/githubuser/lunchParse#readme
+homepage:            https://github.com/phyro/lunchParse#readme
 license:             BSD3
 license-file:        LICENSE
 author:              Tomaz Kariz
@@ -49,4 +49,4 @@ test-suite lunchParse-test
 
 source-repository head
   type:     git
-  location: https://github.com/githubuser/lunchParse
+  location: https://github.com/phyro/lunchParse
